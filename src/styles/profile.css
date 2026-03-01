@@ -659,4 +659,169 @@ body {
   .profile-video-label {
     font-size: 0.7rem;
   }
+
+  .profile-more-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .profile-more-section {
+    padding: 5rem 2rem;
+  }
+}
+
+/* MORE MODELS SECTION */
+.profile-more-section {
+  padding: 7rem 4rem;
+  background: var(--dark);
+  position: relative;
+}
+
+.profile-more-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.profile-more-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-more-card:hover {
+  border-color: var(--pink-main);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(232, 116, 138, 0.15);
+}
+
+.profile-more-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+}
+
+.profile-more-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 6, 6, 0.85) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.profile-more-vip {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  z-index: 10;
+  background: rgba(232, 116, 138, 0.95);
+  color: #fff;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  border-radius: 1px;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-more-info {
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex: 1;
+}
+
+.profile-more-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.profile-more-age {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.profile-more-stats {
+  display: flex;
+  gap: 1.2rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid rgba(232, 116, 138, 0.1);
+  border-bottom: 1px solid rgba(232, 116, 138, 0.1);
+}
+
+.profile-more-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pms-label {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.pms-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.profile-more-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.profile-more-tag {
+  border: 1px solid rgba(232, 116, 138, 0.3);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(232, 116, 138, 0.85);
+}
+
+.profile-more-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.profile-btn-view-all {
+  background: transparent;
+  color: var(--pink-main);
+  border: 1px solid var(--pink-main);
+  padding: 1rem 3rem;
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.profile-btn-view-all:hover {
+  background: var(--pink-main);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(232, 116, 138, 0.25);
 }

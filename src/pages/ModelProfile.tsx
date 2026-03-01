@@ -64,6 +64,66 @@ const cityModels: Record<string, Record<string, ModelData>> = {
       vip: true,
       measurements: '83 – 58 – 86',
       hours: '6PM – 4AM'
+    },
+    'Khánh Huyền': {
+      name: 'Khánh Huyền',
+      age: 23,
+      city: 'Hồ Chí Minh',
+      district: 'Bình Thạnh, TP.HCM',
+      price: 13,
+      height: 163,
+      weight: 51,
+      views: 158.9,
+      bio: '"Em thích những buổi hẹn lãng mạn và đầy cảm xúc."',
+      tags: ['Qua đêm', 'Lãng mạn'],
+      vip: false,
+      measurements: '84 – 59 – 87',
+      hours: '7PM – 6AM'
+    },
+    'Mỹ Linh': {
+      name: 'Mỹ Linh',
+      age: 21,
+      city: 'Hồ Chí Minh',
+      district: 'Quận 7, TP.HCM',
+      price: 11.5,
+      height: 168,
+      weight: 54,
+      views: 149.8,
+      bio: '"Em vui vẻ, năng động và luôn mang đến năng lượng tích cực."',
+      tags: ['Vui vẻ', 'Năng động', 'Thân thiện'],
+      vip: true,
+      measurements: '86 – 61 – 89',
+      hours: '6PM – 5AM'
+    },
+    'Phương Anh': {
+      name: 'Phương Anh',
+      age: 24,
+      city: 'Hồ Chí Minh',
+      district: 'Quận 2, TP.HCM',
+      price: 8,
+      height: 155,
+      weight: 46,
+      views: 145.2,
+      bio: '"Em nhỏ nhắn, dễ thương và rất biết chiều chuộng."',
+      tags: ['Chiều chuộng', 'Dễ thương'],
+      vip: false,
+      measurements: '80 – 56 – 83',
+      hours: '8PM – 4AM'
+    },
+    'Ngọc Trinh': {
+      name: 'Ngọc Trinh',
+      age: 22,
+      city: 'Hồ Chí Minh',
+      district: 'Phú Nhuận, TP.HCM',
+      price: 12,
+      height: 164,
+      weight: 50,
+      views: 141.1,
+      bio: '"Em nhiệt tình, chu đáo và luôn để lại ấn tượng tốt đẹp."',
+      tags: ['Nhiệt tình', 'Chu đáo', 'Sự kiện'],
+      vip: true,
+      measurements: '85 – 60 – 88',
+      hours: '7PM – 5AM'
     }
   },
   hn: {
@@ -400,6 +460,14 @@ export default function ModelProfile() {
     setCurrentVideoSlide(index);
   };
 
+  const getOtherModels = () => {
+    if (!city) return [];
+    const allModels = Object.values(cityModels[city] || {});
+    return allModels.filter(m => m.name !== model?.name).slice(0, 6);
+  };
+
+  const otherModels = getOtherModels();
+
   return (
     <div style={{ background: '#060606', color: '#f0ebe3', minHeight: '100vh' }}>
       <nav className="profile-nav">
@@ -564,6 +632,69 @@ export default function ModelProfile() {
           <div className="profile-video-count">
             {String(currentVideoSlide + 1).padStart(2, '0')} / {String(totalVideoSlides).padStart(2, '0')}
           </div>
+        </div>
+      </section>
+
+      <section className="profile-more-section">
+        <div className="profile-section-header">
+          <h2 className="profile-section-title">Hẹn <em>thêm</em></h2>
+          <div className="profile-section-line" />
+        </div>
+
+        <div className="profile-more-grid">
+          {otherModels.map((otherModel, index) => (
+            <div
+              key={index}
+              className="profile-more-card"
+              onClick={() => window.location.href = `/profile?city=${city}&name=${encodeURIComponent(otherModel.name)}`}
+            >
+              <div className="profile-more-img">
+                <div style={{
+                  width: '100%',
+                  height: '100%',
+                  background: `linear-gradient(135deg, #${String(15 + index * 3).padStart(2, '0')}${String(15 + index * 2).padStart(2, '0')}${String(10 + index).padStart(2, '0')}, #0d0d0d)`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <span style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: '3rem',
+                    color: 'rgba(201, 169, 110, 0.12)'
+                  }}>
+                    {String(index + 2).padStart(2, '0')}
+                  </span>
+                </div>
+                {otherModel.vip && <div className="profile-more-vip">VIP</div>}
+                <div className="profile-more-gradient"></div>
+              </div>
+              <div className="profile-more-info">
+                <h3 className="profile-more-name">{otherModel.name}</h3>
+                <p className="profile-more-age">{otherModel.age} tuổi · {otherModel.district}</p>
+                <div className="profile-more-stats">
+                  <div className="profile-more-stat">
+                    <span className="pms-label">Giá</span>
+                    <span className="pms-value">{otherModel.price}tr</span>
+                  </div>
+                  <div className="profile-more-stat">
+                    <span className="pms-label">Lượt xem</span>
+                    <span className="pms-value">{otherModel.views}k</span>
+                  </div>
+                </div>
+                <div className="profile-more-tags">
+                  {otherModel.tags.slice(0, 2).map((tag, tagIndex) => (
+                    <span key={tagIndex} className="profile-more-tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="profile-more-cta">
+          <button className="profile-btn-view-all" onClick={() => window.location.href = '/'}>
+            Xem tất cả {model?.city}
+          </button>
         </div>
       </section>
 
