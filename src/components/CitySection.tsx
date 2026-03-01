@@ -24,7 +24,16 @@ const models = [
 ];
 
 export default function CitySection({ id, cityLabel, cityName, cityNameItalic, cityKey }: CitySectionProps) {
-  const dragStateRef = useRef({ isDown: false, startX: 0, scrollLeft: 0 });
+  const dragStateRef = useRef({
+    isDown: false,
+    startX: 0,
+    scrollLeft: 0,
+    velocity: 0,
+    lastX: 0,
+    lastTime: 0,
+    animationId: null as number | null,
+    hasMoved: false
+  });
 
   useEffect(() => {
     const track = document.getElementById(`track-${cityKey}`);
@@ -68,42 +77,125 @@ export default function CitySection({ id, cityLabel, cityName, cityNameItalic, c
       `;
     }).join('');
 
-    const handleMouseDown = (e: MouseEvent) => {
+    const stopAnimation = () => {
+      if (dragStateRef.current.animationId !== null) {
+        cancelAnimationFrame(dragStateRef.current.animationId);
+        dragStateRef.current.animationId = null;
+      }
+    };
+
+    const applyMomentum = () => {
+      stopAnimation();
+
+      const friction = 0.95;
+      let velocity = dragStateRef.current.velocity;
+
+      const animate = () => {
+        velocity *= friction;
+        track.scrollLeft -= velocity;
+
+        if (Math.abs(velocity) > 0.5) {
+          dragStateRef.current.animationId = requestAnimationFrame(animate);
+        } else {
+          dragStateRef.current.velocity = 0;
+        }
+      };
+
+      if (Math.abs(velocity) > 0.5) {
+        dragStateRef.current.animationId = requestAnimationFrame(animate);
+      }
+    };
+
+    const getClientX = (e: MouseEvent | TouchEvent) => {
+      return 'touches' in e ? e.touches[0].clientX : e.clientX;
+    };
+
+    const handleStart = (e: MouseEvent | TouchEvent) => {
+      stopAnimation();
       dragStateRef.current.isDown = true;
-      dragStateRef.current.startX = e.pageX - track.offsetLeft;
+      dragStateRef.current.hasMoved = false;
+      dragStateRef.current.velocity = 0;
+
+      const clientX = getClientX(e);
+      dragStateRef.current.startX = clientX;
+      dragStateRef.current.lastX = clientX;
       dragStateRef.current.scrollLeft = track.scrollLeft;
+      dragStateRef.current.lastTime = performance.now();
+
       track.style.cursor = 'grabbing';
+      track.style.scrollBehavior = 'auto';
     };
 
-    const handleMouseUp = () => {
-      dragStateRef.current.isDown = false;
-      track.style.cursor = 'grab';
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMove = (e: MouseEvent | TouchEvent) => {
       if (!dragStateRef.current.isDown) return;
-      e.preventDefault();
-      const x = e.pageX - track.offsetLeft;
-      const walk = (x - dragStateRef.current.startX) * 1.5;
-      track.scrollLeft = dragStateRef.current.scrollLeft - walk;
+
+      const clientX = getClientX(e);
+      const now = performance.now();
+      const deltaTime = now - dragStateRef.current.lastTime || 1;
+      const deltaX = clientX - dragStateRef.current.lastX;
+
+      if (Math.abs(clientX - dragStateRef.current.startX) > 3) {
+        dragStateRef.current.hasMoved = true;
+        if (e.cancelable) {
+          e.preventDefault();
+        }
+      }
+
+      dragStateRef.current.velocity = deltaX / deltaTime * 16;
+      dragStateRef.current.lastX = clientX;
+      dragStateRef.current.lastTime = now;
+
+      const walk = dragStateRef.current.startX - clientX;
+      track.scrollLeft = dragStateRef.current.scrollLeft + walk;
     };
 
-    const handleMouseLeave = () => {
+    const handleEnd = () => {
+      if (!dragStateRef.current.isDown) return;
+
       dragStateRef.current.isDown = false;
       track.style.cursor = 'grab';
+
+      if (dragStateRef.current.hasMoved) {
+        const cards = track.querySelectorAll('.model-card');
+        cards.forEach((card) => {
+          const handleClick = (e: Event) => {
+            e.preventDefault();
+            e.stopPropagation();
+            card.removeEventListener('click', handleClick, true);
+          };
+          card.addEventListener('click', handleClick, true);
+          setTimeout(() => card.removeEventListener('click', handleClick, true), 300);
+        });
+
+        applyMomentum();
+      }
+
+      track.style.scrollBehavior = 'smooth';
     };
 
-    track.addEventListener('mousedown', handleMouseDown);
-    track.addEventListener('mouseup', handleMouseUp);
-    track.addEventListener('mousemove', handleMouseMove);
-    track.addEventListener('mouseleave', handleMouseLeave);
+    track.addEventListener('mousedown', handleStart as EventListener);
+    track.addEventListener('touchstart', handleStart as EventListener, { passive: true });
+
+    window.addEventListener('mousemove', handleMove as EventListener);
+    window.addEventListener('touchmove', handleMove as EventListener, { passive: false });
+
+    window.addEventListener('mouseup', handleEnd);
+    window.addEventListener('touchend', handleEnd);
+
+    track.addEventListener('mouseleave', handleEnd);
+
     track.style.cursor = 'grab';
+    track.style.webkitOverflowScrolling = 'touch';
 
     return () => {
-      track.removeEventListener('mousedown', handleMouseDown);
-      track.removeEventListener('mouseup', handleMouseUp);
-      track.removeEventListener('mousemove', handleMouseMove);
-      track.removeEventListener('mouseleave', handleMouseLeave);
+      stopAnimation();
+      track.removeEventListener('mousedown', handleStart as EventListener);
+      track.removeEventListener('touchstart', handleStart as EventListener);
+      window.removeEventListener('mousemove', handleMove as EventListener);
+      window.removeEventListener('touchmove', handleMove as EventListener);
+      window.removeEventListener('mouseup', handleEnd);
+      window.removeEventListener('touchend', handleEnd);
+      track.removeEventListener('mouseleave', handleEnd);
     };
   }, [cityKey]);
 

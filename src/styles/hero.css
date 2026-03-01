@@ -596,6 +596,8 @@ nav.scrolled {
   scroll-behavior: smooth;
   scrollbar-width: none;
   user-select: none;
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -631,11 +633,14 @@ nav.scrolled {
   transition: all 0.3s;
   display: flex;
   flex-direction: column;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .model-card:hover {
   border-color: var(--pink-main);
-  transform: translateY(-4px);
+  transform: translateY(-4px) translateZ(0);
   box-shadow: 0 12px 32px rgba(232, 116, 138, 0.15);
 }
 
