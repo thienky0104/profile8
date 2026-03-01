@@ -234,42 +234,6 @@ export default function ModelProfile() {
     }
   }, []);
 
-  if (!model) {
-    return (
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#060606', color: '#f0ebe3' }}>
-        <div>Loading...</div>
-      </div>
-    );
-  }
-
-  const totalSlides = 4;
-
-  const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
-
-  const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  const totalVideoSlides = 5;
-
-  const handlePrevVideoSlide = () => {
-    setCurrentVideoSlide((prev) => (prev - 1 + totalVideoSlides) % totalVideoSlides);
-  };
-
-  const handleNextVideoSlide = () => {
-    setCurrentVideoSlide((prev) => (prev + 1) % totalVideoSlides);
-  };
-
-  const goToVideoSlide = (index: number) => {
-    setCurrentVideoSlide(index);
-  };
-
   useEffect(() => {
     const videoSlider = document.getElementById('video-slider');
     if (!videoSlider) return;
@@ -398,7 +362,43 @@ export default function ModelProfile() {
       window.removeEventListener('touchend', handleEnd);
       videoSlider.removeEventListener('mouseleave', handleEnd);
     };
-  }, [totalVideoSlides]);
+  }, []);
+
+  if (!model) {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: '#060606', color: '#f0ebe3' }}>
+        <div>Loading...</div>
+      </div>
+    );
+  }
+
+  const totalSlides = 4;
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const totalVideoSlides = 5;
+
+  const handlePrevVideoSlide = () => {
+    setCurrentVideoSlide((prev) => (prev - 1 + totalVideoSlides) % totalVideoSlides);
+  };
+
+  const handleNextVideoSlide = () => {
+    setCurrentVideoSlide((prev) => (prev + 1) % totalVideoSlides);
+  };
+
+  const goToVideoSlide = (index: number) => {
+    setCurrentVideoSlide(index);
+  };
 
   return (
     <div style={{ background: '#060606', color: '#f0ebe3', minHeight: '100vh' }}>
