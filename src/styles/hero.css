@@ -261,7 +261,7 @@ nav.scrolled {
 
 .hero-title em {
   font-style: italic;
-  color: var(--pink-main);
+  color: var(--text);
   display: block;
 }
 
@@ -547,7 +547,7 @@ nav.scrolled {
 
 .city-name em {
   font-style: italic;
-  color: var(--pink-main);
+  color: var(--text);
 }
 
 .city-meta {
@@ -782,7 +782,7 @@ nav.scrolled {
 }
 
 .cs-val.gold {
-  color: var(--gold);
+  color: var(--text);
   font-weight: 600;
 }
 
