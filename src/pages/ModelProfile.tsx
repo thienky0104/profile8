@@ -422,7 +422,7 @@ export default function ModelProfile() {
                   justifyContent: 'center'
                 }}>
                   <span style={{
-                    fontFamily: "'Cormorant Garamond', serif",
+                    fontFamily: "'Playfair Display', serif",
                     fontSize: '5rem',
                     color: 'rgba(201, 169, 110, 0.12)'
                   }}>
