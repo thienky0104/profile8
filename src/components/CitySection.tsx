@@ -32,7 +32,7 @@ const cityModels: Record<string, Model[]> = {
     { name: 'Ngọc Trinh', age: 22, district: 'Phú Nhuận', price: 12, height: 164, weight: 50, views: 141.1, tags: ['Nhiệt tình'], vip: true, image: 'https://pbs.twimg.com/media/HCK_Ac_boAAcWPI?format=jpg&name=medium' },
     { name: 'Bảo Châu', age: 21, district: 'Quận 5', price: 14, height: 166, weight: 53, views: 138, tags: ['Sang trọng', 'Lịch sự'], vip: false, image: 'https://pbs.twimg.com/media/HCK_oIuagAE2wi6?format=jpg&name=large' },
     { name: 'Lan Anh', age: 23, district: 'Gò Vấp', price: 10, height: 158, weight: 47, views: 132, tags: ['Thân thiện'], vip: false, image: 'https://pbs.twimg.com/media/HCK_4jkbQAA_EI8?format=jpg&name=large' },
-    { name: 'Thu Hà', age: 20, district: 'Tân Bình', price: 9, height: 162, weight: 49, views: 128, tags: ['Nhẹ nhàng', 'Dịu dàng'], vip: false, image: 'https://pbs.twimg.com/media/HCK-MlwaYAAi1lD?format=jpg&name=large' },
+    { name: 'Thu Hà', age: 20, district: 'Tân Bình', price: 9, height: 162, weight: 49, views: 128, tags: ['Nhẹ nhàng', 'Dịu dàng'], vip: false, image: 'https://pbs.twimg.com/media/HCLANcNaAAEeOkJ?format=jpg&name=large' },
     { name: 'Minh Thư', age: 25, district: 'Quận 12', price: 11, height: 167, weight: 52, views: 124, tags: ['Năng động'], vip: true, image: 'https://pbs.twimg.com/media/HCK-MlwaYAAi1lD?format=jpg&name=large' },
     { name: 'Hồng Ngọc', age: 24, district: 'Quận 9', price: 13, height: 160, weight: 48, views: 119, tags: ['Bí ẩn', 'Tinh tế'], vip: false, image: 'https://pbs.twimg.com/media/HCK-MlwaYAAi1lD?format=jpg&name=large' },
   ],
