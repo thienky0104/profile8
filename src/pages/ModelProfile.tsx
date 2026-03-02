@@ -602,7 +602,6 @@ export default function ModelProfile() {
 
           <div className="profile-cta-row">
             <button className="profile-btn-primary">Đặt lịch ngay</button>
-            <button className="profile-btn-secondary">Nhắn tin</button>
           </div>
         </div>
       </section>
