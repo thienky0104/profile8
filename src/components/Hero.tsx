@@ -7,7 +7,7 @@ import Footer from './Footer';
 
 export default function Hero() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeCity, setActiveCity] = useState('saigon');
+  const [activeCity, setActiveCity] = useState('');
 
   useEffect(() => {
     const handleScroll = () => {
