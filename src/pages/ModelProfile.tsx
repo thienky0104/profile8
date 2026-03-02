@@ -468,17 +468,41 @@ export default function ModelProfile() {
 
   const otherModels = getOtherModels();
 
+  const scrollToCity = (cityId: string) => {
+    window.location.href = `/#${cityId}`;
+  };
+
   return (
     <div style={{ background: '#060606', color: '#f0ebe3', minHeight: '100vh' }}>
       <nav className="profile-nav">
         <a href="/" className="profile-logo">Lux<span>Date</span></a>
-        <div className="profile-nav-links">
-          <a href="/">Hồ Chí Minh</a>
-          <a href="/">Hà Nội</a>
-          <a href="/">Đà Nẵng</a>
-          <a href="/">Nha Trang</a>
+
+        <div className="profile-nav-cities">
+          <button className="profile-city-pill" onClick={() => scrollToCity('saigon')}>
+            Sài Gòn
+          </button>
+          <button className="profile-city-pill" onClick={() => scrollToCity('hanoi')}>
+            Hà Nội
+          </button>
+          <button className="profile-city-pill" onClick={() => scrollToCity('danang')}>
+            Đà Nẵng
+          </button>
+          <button className="profile-city-pill" onClick={() => scrollToCity('nhatrang')}>
+            Nha Trang
+          </button>
         </div>
-        <button className="profile-nav-cta">Liên hệ</button>
+
+        <div className="profile-nav-right">
+          <a href="tel:0776943965" className="profile-nav-phone">
+            ☎ 0776 943 965
+          </a>
+          <button
+            className="profile-nav-cta"
+            onClick={() => window.open('https://t.me/hoahong8388', '_blank')}
+          >
+            Đặt lịch
+          </button>
+        </div>
       </nav>
 
       <section className="profile-hero">
