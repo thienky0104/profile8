@@ -61,7 +61,7 @@ const cityModels: Record<string, Model[]> = {
     { name: 'Kim Ngân', age: 24, district: 'Bắc Mỹ An', price: 14, height: 155, weight: 47, views: 113.2, tags: ['Tình cảm', 'Lắng nghe'], vip: true, image: 'https://pbs.twimg.com/media/HCYNL5JaQAAXv1P?format=jpg&name=4096x4096' },
     { name: 'Tuyết Mai', age: 20, district: 'Mỹ Khê', price: 8, height: 162, weight: 50, views: 107.5, tags: ['Bí ẩn'], vip: false, image: 'https://pbs.twimg.com/media/HCYNh6XaMAAZV-3?format=jpg&name=4096x4096' },
     { name: 'Linh Chi', age: 22, district: 'An Hải', price: 11, height: 165, weight: 54, views: 102.8, tags: ['Nhẹ nhàng', 'Dịu dàng'], vip: true, image: 'https://pbs.twimg.com/media/HCYNrFIakAEumEb?format=jpg&name=large' },
-    { name: 'Nhã Uyên', age: 26, district: 'Hòa Xuân', price: 13, height: 159, weight: 48, views: 97.4, tags: ['Hài hước'], vip: false, image: 'https://pbs.twimg.com/media/HCXQeYlaAAAZlRl?format=jpg&name=large' },
+    { name: 'Nhã Uyên', age: 26, district: 'Hòa Xuân', price: 13, height: 159, weight: 48, views: 97.4, tags: ['Hài hước'], vip: false, image: 'https://pbs.twimg.com/media/HCYN3hebwAAUIbo?format=jpg&name=4096x4096' },
     { name: 'Phúc An', age: 19, district: 'Phước Mỹ', price: 9, height: 168, weight: 46, views: 91.6, tags: ['Chiều chuộng', 'Vui vẻ'], vip: false, image: 'https://pbs.twimg.com/media/HCXQeYlaAAAZlRl?format=jpg&name=large' },
   ],
   nt: [
