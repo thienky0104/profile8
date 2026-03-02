@@ -53,7 +53,7 @@ const cityModels: Record<string, Model[]> = {
   dn: [
     { name: 'Hoài Thương', age: 20, district: 'Hải Châu', price: 13, height: 161, weight: 48, views: 162.3, tags: ['Vui vẻ', 'Năng động'], vip: true, image: 'https://pbs.twimg.com/media/HCYLoKGaUAAT6A7?format=jpg&name=large' },
     { name: 'Cẩm Ly', age: 22, district: 'Thanh Khê', price: 11, height: 164, weight: 52, views: 151.8, tags: ['Chiều chuộng'], vip: true, image: 'https://pbs.twimg.com/media/HCYL8goakAEdzSB?format=jpg&name=4096x4096' },
-    { name: 'Thiên Kim', age: 25, district: 'Sơn Trà', price: 15, height: 158, weight: 50, views: 144.2, tags: ['Lãng mạn', 'Tinh tế'], vip: true, image: 'https://pbs.twimg.com/media/HCXQeYlaAAAZlRl?format=jpg&name=large' },
+    { name: 'Thiên Kim', age: 25, district: 'Sơn Trà', price: 15, height: 158, weight: 50, views: 144.2, tags: ['Lãng mạn', 'Tinh tế'], vip: true, image: 'https://pbs.twimg.com/media/HCYMKKcaIAAF6LI?format=jpg&name=4096x4096' },
     { name: 'Bảo Ngọc', age: 19, district: 'Ngũ Hành Sơn', price: 9, height: 166, weight: 46, views: 138.6, tags: ['Nhiệt tình'], vip: false, image: 'https://pbs.twimg.com/media/HCXQeYlaAAAZlRl?format=jpg&name=large' },
     { name: 'Yến Nhi', age: 23, district: 'Liên Chiểu', price: 12, height: 160, weight: 51, views: 131.4, tags: ['Thân thiện', 'Dễ thương'], vip: true, image: 'https://pbs.twimg.com/media/HCXQeYlaAAAZlRl?format=jpg&name=large' },
     { name: 'Khánh Phương', age: 21, district: 'Cẩm Lệ', price: 10, height: 163, weight: 49, views: 124.9, tags: ['Qua đêm'], vip: false, image: 'https://pbs.twimg.com/media/HCXQeYlaAAAZlRl?format=jpg&name=large' },
